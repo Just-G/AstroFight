@@ -5,6 +5,7 @@ using AstroFight.Content.Sprite;
 using System;
 using System.Collections.Generic;
 using AstroFight.Content;
+using AstroFight.States;
 
 namespace AstroFight
 {
@@ -18,6 +19,9 @@ namespace AstroFight
         private Player _player;
         private BallTest _balltest;
         private Celling _celling;
+
+        private State _currentState;
+        private State _nextState;
 
         Random ran = new Random();
         public Vector2 _distance;
@@ -812,6 +816,11 @@ namespace AstroFight
         public Vector2 origin(Texture2D ori)
         {
             return _origin = new Vector2(ori.Width / 2, ori.Height / 2);
+        }
+
+        public void ChangeState(State state)
+        {
+            _nextState = state;
         }
     }
 }

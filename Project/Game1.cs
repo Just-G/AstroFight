@@ -31,8 +31,6 @@ namespace AstroFight
         public float mouse;
         Random ball_ran = new Random();
 
-        bool swapY = true;
-
         public Vector2 _origin;
 
         Texture2D _rect, ship_yello, line, ship_blue, ship_green, ship_purple, ship_red, boom, bg, railbase, nuke, rainbow, bombline, dish;
@@ -532,42 +530,29 @@ namespace AstroFight
             {
                 for (int j = 0; j < 12; j++)
                 {
-                        int posY = i;
-                        switch (swapY)
-                        {
-                            case true:
-                                if (posY % 2 != 0) { posY += 13; }
-                                else { posY -= 13; }
-                                break;
-                            case false:
-                                if (posY % 2 != 0) { posY -= 13; }
-                                else { posY += 13; }
-                                break;
-                        }
-
                         if (_grid[i, j] == -1)
                         {
                             _spriteBatch.Draw(_rect, new Vector2(TILESIZE * j, TILESIZE * i), null, Color.Black, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 1)
                         {
-                            _spriteBatch.Draw(ship_yello, new Vector2((TILESIZE * j) + posY, (TILESIZE * i) + 25), null, Color.White, 0f, origin(ship_yello), 1f, SpriteEffects.None, 0f);
+                            _spriteBatch.Draw(ship_yello, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.White, 0f, origin(ship_yello), 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 2)
                         {
-                            _spriteBatch.Draw(ship_blue, new Vector2((TILESIZE * j) + posY, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_blue), 1f, SpriteEffects.None, 0f);
+                            _spriteBatch.Draw(ship_blue, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_blue), 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 3)
                         {
-                            _spriteBatch.Draw(ship_green, new Vector2((TILESIZE * j) + posY, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_green), 1f, SpriteEffects.None, 0f);
+                            _spriteBatch.Draw(ship_green, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_green), 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 4)
                         {
-                            _spriteBatch.Draw(ship_purple, new Vector2((TILESIZE * j) + posY, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_purple), 1f, SpriteEffects.None, 0f);
+                            _spriteBatch.Draw(ship_purple, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_purple), 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 5)
                         {
-                            _spriteBatch.Draw(ship_red, new Vector2((TILESIZE * j) + posY, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_red), 1f, SpriteEffects.None, 0f);
+                            _spriteBatch.Draw(ship_red, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.BlanchedAlmond, 0f, origin(ship_red), 1f, SpriteEffects.None, 0f);
                         }
                         else if (_grid[i, j] == 6)
                         {
@@ -827,7 +812,6 @@ namespace AstroFight
                 }
                 grid_copy = _grid;
 
-                swapY = !swapY;
             }
             //find origin
             public Vector2 origin(Texture2D ori)

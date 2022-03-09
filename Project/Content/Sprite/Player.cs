@@ -15,7 +15,7 @@ namespace Project.Content.Sprite
         public Player(Texture2D texture)
             : base(texture)
         {
-            _origin = new Vector2(53 , 50);
+            _origin = new Vector2(53, 50);
         }
 
         public override void Update()
@@ -25,11 +25,11 @@ namespace Project.Content.Sprite
             _distance.Y = _mouseState.Y - _position.Y;
 
             _rotation = (float)Math.Atan2(_distance.Y, _distance.X);
-            mouse = -(_rotation*(180 / (float)Math.PI));
+            mouse = -(_rotation * (180 / (float)Math.PI));
 
-            if(mouse > 150 || mouse < -90)
+            if (mouse > 150 || mouse < -90)
             {
-                _rotation = (float)-2.9; 
+                _rotation = (float)-2.9;
             }
             else if (mouse < 30 && mouse > -90)
             {

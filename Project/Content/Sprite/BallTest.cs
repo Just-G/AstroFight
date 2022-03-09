@@ -36,7 +36,7 @@ namespace Project.Content.Sprite
         {
             xPos = (int)_position.X / 50;
             yPos = (int)_position.Y / 50;
-            
+
             switch (state)
             {
                 case 0:
@@ -49,13 +49,13 @@ namespace Project.Content.Sprite
                     {
                         _position.X += -(float)(_speed * Math.Cos(_direction));
                         _position.Y += (float)(_speed * Math.Sin(_direction));
-                    } 
+                    }
                     break;
-                 case 1:
-                    
+                case 1:
+
                     break;
             }
-            
+
         }
 
         public override void Draw(SpriteBatch spritebatch)
@@ -63,7 +63,7 @@ namespace Project.Content.Sprite
             if (state == 0)
             {
                 spritebatch.Draw(_texture, _position, null, Color.White, _rotation, _origin, 1f, SpriteEffects.None, 0f);
-            }          
+            }
         }
 
         public int[,] nuclear(int[,] _grid)
@@ -73,15 +73,15 @@ namespace Project.Content.Sprite
             //System.Diagnostics.Debug.WriteLine("lol");
             for (int i = 0; i <= 2; i++)
             {
-                for(int j = 0; j <= 2; j++)
+                for (int j = 0; j <= 2; j++)
                 {
-                    if (grid[yPos-i, xPos-j] == -1)
+                    if (grid[yPos - i, xPos - j] == -1)
                     {
                         break;
                     }
-                     grid[yPos-i, xPos-j] = 9;
+                    grid[yPos - i, xPos - j] = 9;
                 }
-                if (grid[yPos-i, xPos] == -1)
+                if (grid[yPos - i, xPos] == -1)
                 {
                     break;
                 }
@@ -91,13 +91,13 @@ namespace Project.Content.Sprite
             {
                 for (int j = 0; j <= 2; j++)
                 {
-                    if (grid[yPos-i, xPos+j] == -1)
+                    if (grid[yPos - i, xPos + j] == -1)
                     {
                         break;
                     }
-                    grid[yPos-i, xPos+j] = 9;
+                    grid[yPos - i, xPos + j] = 9;
                 }
-                if (grid[yPos-i, xPos] == -1)
+                if (grid[yPos - i, xPos] == -1)
                 {
                     break;
                 }
@@ -107,13 +107,13 @@ namespace Project.Content.Sprite
             {
                 for (int j = 0; j <= 2; j++)
                 {
-                    if (grid[yPos+i, xPos-j] == -1)
+                    if (grid[yPos + i, xPos - j] == -1)
                     {
                         break;
                     }
-                    grid[yPos+i, xPos-j] = 9;
+                    grid[yPos + i, xPos - j] = 9;
                 }
-                if (grid[yPos+i, xPos] == -1)
+                if (grid[yPos + i, xPos] == -1)
                 {
                     break;
                 }
@@ -123,20 +123,20 @@ namespace Project.Content.Sprite
             {
                 for (int j = 0; j <= 2; j++)
                 {
-                    if (grid[yPos+i, xPos+j] == -1)
+                    if (grid[yPos + i, xPos + j] == -1)
                     {
                         break;
                     }
-                    grid[yPos+i, xPos+j] = 9;
+                    grid[yPos + i, xPos + j] = 9;
                 }
-                if (grid[yPos+i, xPos] == -1)
+                if (grid[yPos + i, xPos] == -1)
                 {
                     break;
                 }
             }
             grid_copy = grid;
             //celling up
-            if (grid[1,1] == -1)
+            if (grid[1, 1] == -1)
             {
                 for (int i = 1; i <= 15; i++)
                 {
@@ -166,7 +166,7 @@ namespace Project.Content.Sprite
                     if (grid[yPos - i, xPos - j] != 0 && grid[yPos - i, xPos - j] != -1)
                     {
                         grid[yPos - i, xPos - j] = color;
-                    } 
+                    }
                 }
                 if (grid[yPos - i, xPos] == -1)
                 {
@@ -186,7 +186,7 @@ namespace Project.Content.Sprite
                     {
                         grid[yPos - i, xPos + j] = color;
                     }
-                    
+
                 }
                 if (grid[yPos - i, xPos] == -1)
                 {

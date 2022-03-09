@@ -17,16 +17,16 @@ namespace Project
 
         private Player _player;
         private BallTest _balltest;
-        private BallType ship;
+        private Celling _celling;
 
         Random ran = new Random();
         public Vector2 _distance;
         public int stage = 1;
-        int testtest = 13;
+        int testtest = 1;
         int turn_count;
         public float mouse;
         Random ball_ran = new Random();
-        
+
 
         public Vector2 _origin;
 
@@ -43,7 +43,7 @@ namespace Project
         int limit = 10;
         float countDuration = 0.5f; //every  2s.
         float currentTime = 0f;
-        int type ;
+        int type;
 
         public Game1()
         {
@@ -108,12 +108,10 @@ namespace Project
                     break;
             }
             type = ran.Next(1, 6);
-            
-
             grid_copy = new int[18, 12];
             grid_copy = _grid;
             turn_count = 0;
-            
+
             base.Initialize();
         }
 
@@ -124,15 +122,20 @@ namespace Project
             // TODO: use this.Content to load your game content here
 
             var texture = Content.Load<Texture2D>("railgun");
+            var mother = Content.Load<Texture2D>("MotherShipWithBabara");
             line = this.Content.Load<Texture2D>("Line");
-            railbase =this.Content.Load<Texture2D>("BaseG");
+            railbase = this.Content.Load<Texture2D>("BaseG");
             dish = this.Content.Load<Texture2D>("dish");
             _player = new Player(texture)
             {
                 _position = new Vector2(295, 850)
             };
+            _celling = new Celling(mother)
+            {
+                _position = new Vector2(50, -350)
+            };
             _rect = new Texture2D(_graphics.GraphicsDevice, 50, 50);
-            ship_yello = this.Content.Load<Texture2D>("SpaceShipYello") ;
+            ship_yello = this.Content.Load<Texture2D>("SpaceShipYello");
             ship_blue = this.Content.Load<Texture2D>("SpaceShipBlue");
             ship_green = this.Content.Load<Texture2D>("SpaceShipGreen");
             ship_purple = this.Content.Load<Texture2D>("SpaceShipPurple");
@@ -141,12 +144,10 @@ namespace Project
             rainbow = this.Content.Load<Texture2D>("rainbow");
             bombline = this.Content.Load<Texture2D>("item1");
             boom = this.Content.Load<Texture2D>("explode");
-            ship = new BallType();
             bg = this.Content.Load<Texture2D>("BackGround");
-            Color[] data = new Color[TILESIZE * TILESIZE];
+            /*Color[] data = new Color[TILESIZE * TILESIZE];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
-            _rect.SetData(data);
-            
+            _rect.SetData(data);*/
         }
 
         protected override void Update(GameTime gameTime)
@@ -155,7 +156,8 @@ namespace Project
                 Exit();
             // TODO: Add your update logic here
             //_player.Update();
-            currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds; //Time passed since last Update() 
+            currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //effect boom
             if (currentTime >= countDuration)
             {
                 counter++;
@@ -169,7 +171,7 @@ namespace Project
                             _grid[i, j] = 0;
                         }
                     }
-                }                              
+                }
             }
             switch (stage)
             {
@@ -187,11 +189,12 @@ namespace Project
                     {
                         turn_count = 0;
                         cellingDrop();
+                        _celling.Update();
                     }
                     //check lose
                     for (int i = 1; i < 11; i++)
                     {
-                        if(_grid[15,i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
+                        if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
                             stage = 3;
                         }
@@ -258,7 +261,7 @@ namespace Project
                     {
                         _grid[17, 3] = 8;
                     }
-                    else if (count_combo < 5 )
+                    else if (count_combo < 5)
                     {
                         _grid[17, 3] = 0;
                     }
@@ -270,13 +273,13 @@ namespace Project
                         _balltest._speed = 10;
                         turn_count += 1;
                         stage = 2;
-                        type = ran.Next(1,6);
+                        type = ran.Next(1, 6);
                     }
                     //if right click shoot
                     if (_player._mouseState.RightButton == ButtonState.Pressed &&
                         _player._previousMouseState.RightButton == ButtonState.Released)
                     {
-                        if (count_combo >=10)
+                        if (count_combo >= 10)
                         {
                             count_combo = 0;
                             var texture_nuke = Content.Load<Texture2D>("NukeMininlaVersion");
@@ -322,7 +325,7 @@ namespace Project
                             type = ran.Next(1, 6);
                         }
                     }
-                        break;
+                    break;
                 //ball moving phase
                 case 2:
                     _player.Update();
@@ -353,7 +356,7 @@ namespace Project
                                 _grid = _balltest.nuclear(_grid);
                                 turn_count -= 1;
                             }
-                            else if(_balltest.type == 7)
+                            else if (_balltest.type == 7)
                             {
                                 _grid = _balltest.colorBucket(_grid);
                             }
@@ -497,7 +500,7 @@ namespace Project
                         stage = 1;
                     }
                     break;
-                    //System.Diagnostics.Debug.WriteLine(_balltest._position.X);
+                //System.Diagnostics.Debug.WriteLine(_balltest._position.X);
                 case 3:
 
                     break;
@@ -517,6 +520,7 @@ namespace Project
             _spriteBatch.Draw(railbase, new Vector2(305, 870), null, Color.White, 0f, origin(railbase), 1f, SpriteEffects.None, 0f);
             _spriteBatch.Draw(dish, new Vector2(150, 850), null, Color.White, 0f, origin(dish), 1f, SpriteEffects.None, 0f);
             _player.Draw(_spriteBatch);
+            _celling.Draw(_spriteBatch);
             //draw ball
             for (int i = 0; i < 18; i++)
             {
@@ -569,7 +573,7 @@ namespace Project
                 //bord static
                 case 1:
                     _balltest.Draw(_spriteBatch);
-                    
+
                     break;
                 //ball moving
                 case 2:
@@ -588,31 +592,31 @@ namespace Project
 
         public float toDeg(float rad)
         {
-            return rad * (180/(float)Math.PI);
+            return rad * (180 / (float)Math.PI);
         }
 
         //check nearbuble
-        public void bubble_pop(int y,int x,int prey,int prex)
+        public void bubble_pop(int y, int x, int prey, int prex)
         {
             pre_point.Add(new Point(y, x));
             Point[] pre_point_array = pre_point.ToArray();
-            
+
             int count1 = count;
             bool inArray = true;
-            
+
             //left up
-            if (_grid[y - 1,x - 1] == _grid[y, x])
+            if (_grid[y - 1, x - 1] == _grid[y, x])
             {
-                for (int i = 0; i < count1+1; i++)
+                for (int i = 0; i < count1 + 1; i++)
                 {
-                    Point p = new Point(y-1, x-1);
+                    Point p = new Point(y - 1, x - 1);
                     if (p != pre_point_array[i])
                     {
                         inArray = false;
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -622,10 +626,10 @@ namespace Project
                     count++;
                     bubble_pop(y - 1, x - 1, prey - 1, prex - 1);
                 }
-                
+
             }
             //up
-            if (_grid[y -1, x] == _grid[y, x])
+            if (_grid[y - 1, x] == _grid[y, x])
             {
                 for (int i = 0; i < count1 + 1; i++)
                 {
@@ -636,7 +640,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -659,7 +663,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -671,7 +675,7 @@ namespace Project
                 }
             }
             //left
-            if (_grid[y, x - 1] == _grid[y, x] )
+            if (_grid[y, x - 1] == _grid[y, x])
             {
                 for (int i = 0; i < count1 + 1; i++)
                 {
@@ -693,7 +697,7 @@ namespace Project
                 }
             }
             //righr
-            if (_grid[y,x + 1] == _grid[y, x])
+            if (_grid[y, x + 1] == _grid[y, x])
             {
                 for (int i = 0; i < count1 + 1; i++)
                 {
@@ -704,7 +708,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -716,7 +720,7 @@ namespace Project
                 }
             }
             //left down
-            if (_grid[y + 1, x - 1] == _grid[y, x] )
+            if (_grid[y + 1, x - 1] == _grid[y, x])
             {
                 for (int i = 0; i < count1 + 1; i++)
                 {
@@ -727,7 +731,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -750,7 +754,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -758,7 +762,7 @@ namespace Project
                 if (!inArray)
                 {
                     count++;
-                    bubble_pop(y + 1, x , prey + 1, prex );
+                    bubble_pop(y + 1, x, prey + 1, prex);
                 }
             }
             //right down
@@ -773,7 +777,7 @@ namespace Project
                     }
                     else
                     {
-                        
+
                         inArray = true;
                         break;
                     }
@@ -792,13 +796,13 @@ namespace Project
             //i = y,j = x 
             for (int i = 15; i >= 1; i--)
             {
-                for (int j= 10; j >= 1; j--)
+                for (int j = 10; j >= 1; j--)
                 {
-                    if (i-1 <= 0)
+                    if (i - 1 <= 0)
                     {
                         _grid[i, j] = -1;
                     }
-                    else 
+                    else
                         _grid[i, j] = grid_copy[i - 1, j];
                 }
             }
@@ -807,7 +811,7 @@ namespace Project
         //find origin
         public Vector2 origin(Texture2D ori)
         {
-            return _origin = new Vector2 (ori.Width / 2, ori.Height / 2);
+            return _origin = new Vector2(ori.Width / 2, ori.Height / 2);
         }
     }
 }

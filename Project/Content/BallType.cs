@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Project.Content
 {
-    
+
     class BallType
     {
         Random ran = new Random();

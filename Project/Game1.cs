@@ -1,12 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Project.Content.Sprite;
+using AstroFight.Content.Sprite;
 using System;
 using System.Collections.Generic;
-using Project.Content;
+using AstroFight.Content;
 
-namespace Project
+namespace AstroFight
 {
     public class Game1 : Game
     {

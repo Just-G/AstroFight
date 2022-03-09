@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Project
+namespace AstroFight
 {
     public static class Program
     {

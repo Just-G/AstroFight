@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Project.Content.Sprite
+namespace AstroFight.Content.Sprite
 {
     class Sprite
     {

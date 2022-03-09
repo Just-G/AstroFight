@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project.Content
+namespace AstroFight.Content
 {
     class grid
     {

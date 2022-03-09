@@ -121,11 +121,11 @@ namespace AstroFight
 
             // TODO: use this.Content to load your game content here
 
-            var texture = Content.Load<Texture2D>("railgun");
-            var mother = Content.Load<Texture2D>("MotherShipWithBabara");
-            line = this.Content.Load<Texture2D>("Line");
-            railbase = this.Content.Load<Texture2D>("BaseG");
-            dish = this.Content.Load<Texture2D>("dish");
+            var texture = Content.Load<Texture2D>("Sprites/railgun");
+            var mother = Content.Load<Texture2D>("Sprites/MotherShipWithBabara");
+            line = this.Content.Load<Texture2D>("Sprites/Line");
+            railbase = this.Content.Load<Texture2D>("Sprites/BaseG");
+            dish = this.Content.Load<Texture2D>("Sprites/dish");
             _player = new Player(texture)
             {
                 _position = new Vector2(295, 850)
@@ -135,16 +135,16 @@ namespace AstroFight
                 _position = new Vector2(50, -350)
             };
             _rect = new Texture2D(_graphics.GraphicsDevice, 50, 50);
-            ship_yello = this.Content.Load<Texture2D>("SpaceShipYello");
-            ship_blue = this.Content.Load<Texture2D>("SpaceShipBlue");
-            ship_green = this.Content.Load<Texture2D>("SpaceShipGreen");
-            ship_purple = this.Content.Load<Texture2D>("SpaceShipPurple");
-            ship_red = this.Content.Load<Texture2D>("SpaceShipRed");
-            nuke = this.Content.Load<Texture2D>("NukeMininlaVersion");
-            rainbow = this.Content.Load<Texture2D>("rainbow");
-            bombline = this.Content.Load<Texture2D>("item1");
-            boom = this.Content.Load<Texture2D>("explode");
-            bg = this.Content.Load<Texture2D>("BackGround");
+            ship_yello = this.Content.Load<Texture2D>("Sprites/SpaceShipYello");
+            ship_blue = this.Content.Load<Texture2D>("Sprites/SpaceShipBlue");
+            ship_green = this.Content.Load<Texture2D>("Sprites/SpaceShipGreen");
+            ship_purple = this.Content.Load<Texture2D>("Sprites/SpaceShipPurple");
+            ship_red = this.Content.Load<Texture2D>("Sprites/SpaceShipRed");
+            nuke = this.Content.Load<Texture2D>("Sprites/NukeMininlaVersion");
+            rainbow = this.Content.Load<Texture2D>("Sprites/rainbow");
+            bombline = this.Content.Load<Texture2D>("Sprites/item1");
+            boom = this.Content.Load<Texture2D>("Sprites/explode");
+            bg = this.Content.Load<Texture2D>("Backgrounds/BackGround");
             /*Color[] data = new Color[TILESIZE * TILESIZE];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
             _rect.SetData(data);*/
@@ -203,7 +203,7 @@ namespace AstroFight
                     switch (type)
                     {
                         case 1:
-                            var texture_ship_yello = Content.Load<Texture2D>("SpaceShipYello");
+                            var texture_ship_yello = Content.Load<Texture2D>("Sprites/SpaceShipYello");
                             _balltest = new BallTest(texture_ship_yello)
                             {
                                 _position = new Vector2(300, 850),
@@ -212,7 +212,7 @@ namespace AstroFight
                             };
                             break;
                         case 2:
-                            var texture_ship_blue = Content.Load<Texture2D>("SpaceShipBlue");
+                            var texture_ship_blue = Content.Load<Texture2D>("Sprites/SpaceShipBlue");
                             _balltest = new BallTest(texture_ship_blue)
                             {
                                 _position = new Vector2(300, 850),
@@ -221,7 +221,7 @@ namespace AstroFight
                             };
                             break;
                         case 3:
-                            var texture_ship_green = Content.Load<Texture2D>("SpaceShipGreen");
+                            var texture_ship_green = Content.Load<Texture2D>("Sprites/SpaceShipGreen");
                             _balltest = new BallTest(texture_ship_green)
                             {
                                 _position = new Vector2(300, 850),
@@ -230,7 +230,7 @@ namespace AstroFight
                             };
                             break;
                         case 4:
-                            var texture_ship_pueple = Content.Load<Texture2D>("SpaceShipPurple");
+                            var texture_ship_pueple = Content.Load<Texture2D>("Sprites/SpaceShipPurple");
                             _balltest = new BallTest(texture_ship_pueple)
                             {
                                 _position = new Vector2(300, 850),
@@ -239,7 +239,7 @@ namespace AstroFight
                             };
                             break;
                         case 5:
-                            var texture_ship_red = Content.Load<Texture2D>("SpaceShipRed");
+                            var texture_ship_red = Content.Load<Texture2D>("Sprites/SpaceShipRed");
                             _balltest = new BallTest(texture_ship_red)
                             {
                                 _position = new Vector2(300, 850),
@@ -282,7 +282,7 @@ namespace AstroFight
                         if (count_combo >= 10)
                         {
                             count_combo = 0;
-                            var texture_nuke = Content.Load<Texture2D>("NukeMininlaVersion");
+                            var texture_nuke = Content.Load<Texture2D>("Sprites/NukeMininlaVersion");
                             _balltest = new BallTest(texture_nuke)
                             {
                                 _position = new Vector2(300, 850),
@@ -297,7 +297,7 @@ namespace AstroFight
                         else if (count_combo >= 5 && count_combo < 10)
                         {
                             count_combo = 0;
-                            var texture_colorfull = Content.Load<Texture2D>("rainbow");
+                            var texture_colorfull = Content.Load<Texture2D>("Sprites/rainbow");
                             _balltest = new BallTest(texture_colorfull)
                             {
                                 _position = new Vector2(300, 850),
@@ -312,7 +312,7 @@ namespace AstroFight
                         else if (count_combo >= 2 && count_combo < 5)
                         {
                             count_combo = 0;
-                            var texture_line = Content.Load<Texture2D>("item1");
+                            var texture_line = Content.Load<Texture2D>("Sprites/item1");
                             _balltest = new BallTest(texture_line)
                             {
                                 _position = new Vector2(300, 850),

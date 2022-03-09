@@ -532,8 +532,6 @@ namespace AstroFight
             {
                 for (int j = 0; j < 12; j++)
                 {
-                    for (int j = 0; j < 12; j++)
-                    {
                         int posY = i;
                         switch (swapY)
                         {
@@ -843,4 +841,4 @@ namespace AstroFight
             }
         }
     }
-}
+

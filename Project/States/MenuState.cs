@@ -20,9 +20,9 @@ namespace AstroFight.States
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
-            var buttonTexture_easy = _content.Load<Texture2D>("Controls/Easy_Button2");
-            var buttonTexture_normal = _content.Load<Texture2D>("Controls/Normal_Button2");
-            var buttonTexture_hard = _content.Load<Texture2D>("Controls/Hard_Button2");
+            var buttonTexture_easy = _content.Load<Texture2D>("Buttons/Easy_Button2");
+            var buttonTexture_normal = _content.Load<Texture2D>("Buttons/Normal_Button2");
+            var buttonTexture_hard = _content.Load<Texture2D>("Buttons/Hard_Button2");
 
             // BGM
             _backgroundSong = content.Load<Song>("Sounds/MaskedWolf");
@@ -67,17 +67,17 @@ namespace AstroFight.States
 
         private void EasyGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new EasyState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
         }
 
         private void NormalGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new NormalState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
         }
 
         private void HardGameButton_Click(object sender, EventArgs e)
         {
-            _game.ChangeState(new HardState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
         }
 
         public override void PostUpdate(GameTime gameTime)
@@ -90,5 +90,12 @@ namespace AstroFight.States
             foreach (var component in _components)
                 component.Update(gameTime);
         }
+
+        /*
+        private void QuitGameButton_Click(object sender, EventArgs e)
+        {
+            _game.Exit();
+        }
+        */
     }
 }

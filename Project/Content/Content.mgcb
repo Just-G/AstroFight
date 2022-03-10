@@ -73,7 +73,7 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/Normal_Button2.png
 
-#begin Sprites/BaseB.png
+#begin Logo/GameLogo1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -83,9 +83,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/BaseB.png
+/build:Logo/GameLogo1.png
 
-#begin Sprites/BaseG.png
+#begin Logo/Title3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -95,9 +95,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/BaseG.png
+/build:Logo/Title3.png
 
-#begin Sprites/BaseR.png
+#begin Pictures/BaseB.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,9 +107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/BaseR.png
+/build:Pictures/BaseB.png
 
-#begin Sprites/dish.png
+#begin Pictures/BaseG.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,9 +119,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/dish.png
+/build:Pictures/BaseG.png
 
-#begin Sprites/explode.png
+#begin Pictures/BaseR.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -131,9 +131,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/explode.png
+/build:Pictures/BaseR.png
 
-#begin Sprites/item1.png
+#begin Pictures/dish.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,9 +143,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/item1.png
+/build:Pictures/dish.png
 
-#begin Sprites/Line.jpg
+#begin Pictures/explode.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -155,9 +155,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Line.jpg
+/build:Pictures/explode.png
 
-#begin Sprites/MotherShipWithBabara.png
+#begin Pictures/item1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -167,9 +167,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/MotherShipWithBabara.png
+/build:Pictures/item1.png
 
-#begin Sprites/MotherShipWithBabara2.png
+#begin Pictures/Line.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,9 +179,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/MotherShipWithBabara2.png
+/build:Pictures/Line.jpg
 
-#begin Sprites/NukeMininlaVersion.png
+#begin Pictures/MotherShipWithBabara.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -191,9 +191,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/NukeMininlaVersion.png
+/build:Pictures/MotherShipWithBabara.png
 
-#begin Sprites/railgun.png
+#begin Pictures/MotherShipWithBabara2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -203,9 +203,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/railgun.png
+/build:Pictures/MotherShipWithBabara2.png
 
-#begin Sprites/rainbow.png
+#begin Pictures/NukeMininlaVersion.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -215,9 +215,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/rainbow.png
+/build:Pictures/NukeMininlaVersion.png
 
-#begin Sprites/SpaceShipBlue.png
+#begin Pictures/railgun.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -227,9 +227,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/SpaceShipBlue.png
+/build:Pictures/railgun.png
 
-#begin Sprites/SpaceShipGreen.png
+#begin Pictures/rainbow.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,9 +239,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/SpaceShipGreen.png
+/build:Pictures/rainbow.png
 
-#begin Sprites/SpaceShipPurple.png
+#begin Pictures/SpaceShipBlue.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -251,9 +251,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/SpaceShipPurple.png
+/build:Pictures/SpaceShipBlue.png
 
-#begin Sprites/SpaceShipRed.png
+#begin Pictures/SpaceShipGreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -263,9 +263,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/SpaceShipRed.png
+/build:Pictures/SpaceShipGreen.png
 
-#begin Sprites/SpaceShipYello.png
+#begin Pictures/SpaceShipPurple.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -275,5 +275,47 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/SpaceShipYello.png
+/build:Pictures/SpaceShipPurple.png
+
+#begin Pictures/SpaceShipRed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pictures/SpaceShipRed.png
+
+#begin Pictures/SpaceShipYello.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pictures/SpaceShipYello.png
+
+#begin Sounds/Lose4.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Lose4.mp3
+
+#begin Sounds/MaskedWolf.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/MaskedWolf.mp3
+
+#begin Sounds/Pop.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Pop.mp3
 

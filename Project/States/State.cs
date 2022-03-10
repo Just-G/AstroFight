@@ -14,11 +14,12 @@ namespace AstroFight.States
         #region Fields
 
         protected ContentManager _content;
+
         protected GraphicsDevice _graphicsDevice;
+
         protected Game1 _game;
 
         #endregion
-
 
         #region Methods
 
@@ -29,7 +30,9 @@ namespace AstroFight.States
         public State(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
         {
             _game = game;
+
             _graphicsDevice = graphicsDevice;
+
             _content = content;
         }
 

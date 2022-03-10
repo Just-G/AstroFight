@@ -18,7 +18,6 @@ namespace AstroFight.Controls
 
         private bool _isHovering;
 
-        private SpriteFont _font;
         private Texture2D _texture;
 
         #endregion
@@ -61,6 +60,7 @@ namespace AstroFight.Controls
 
             spriteBatch.Draw(_texture, Rectangle, colour);
 
+            /*
             if (!string.IsNullOrEmpty(Text))
             {
                 var x = (Rectangle.X + (Rectangle.Width / 2)) - (_font.MeasureString(Text).X / 2);
@@ -68,6 +68,7 @@ namespace AstroFight.Controls
 
                 spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColour);
             }
+            */
         }
 
         public override void Update(GameTime gameTime)

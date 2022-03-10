@@ -30,7 +30,7 @@ namespace AstroFight.States
 
         public Vector2 _origin;
 
-        Texture2D _rect, ship_yello, line, ship_blue, ship_green, ship_purple, ship_red, boom, bg, railbase, nuke, rainbow, bombline, dish;
+        Texture2D _rect, ship_yello, line, ship_blue, ship_green, ship_purple, ship_red, boom, bg, railbase, nuke, rainbow, bombline, dish, popupV, popupL;
         int count = 0;
         int count_combo = 0;
         List<Point> pre_point = new List<Point>();
@@ -42,6 +42,8 @@ namespace AstroFight.States
         float countDuration = 0.5f;
         float currentTime = 0f;
         int type;
+        bool check_win;
+
         public HardGameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
@@ -59,6 +61,8 @@ namespace AstroFight.States
             bombline = _content.Load<Texture2D>("Pictures/item1");
             boom = _content.Load<Texture2D>("Pictures/explode");
             bg = _content.Load<Texture2D>("Backgrounds/BackGround");
+            popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
+            popupL = _content.Load<Texture2D>("Pictures/GameOver2");
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -209,7 +213,7 @@ namespace AstroFight.States
                 case 1:
                     _player.Update();
                     pre_point.Clear();
-                    bool check_win = true;
+                    check_win = true;
                     if (count > 1)
                     {
                         count_combo += count;
@@ -227,7 +231,8 @@ namespace AstroFight.States
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
-                            stage = 3;
+                            //stage = 3;
+                            _game.ChangeState(new GameOver(_game, _graphicsDevice, _content));
                         }
                     }
                     //check win
@@ -243,7 +248,8 @@ namespace AstroFight.States
                     }
                     if (check_win == true)
                     {
-                        stage = 4;
+                        //stage = 4;
+                        _game.ChangeState(new Victory(_game, _graphicsDevice, _content));
                     }
                     //random color
                     switch (type)

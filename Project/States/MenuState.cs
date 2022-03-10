@@ -48,11 +48,11 @@ namespace AstroFight.States
             hardGameButton.Click += HardGameButton_Click;
 
             _components = new List<Component>()
-      {
-        easyGameButton,
-        normalGameButton,
-        hardGameButton,
-      };
+            {
+                easyGameButton,
+                normalGameButton,
+                hardGameButton,
+            };
         }
         public static bool IsRepeating { get; set; }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

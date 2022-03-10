@@ -174,7 +174,7 @@ namespace AstroFight.States
             if (count_initial < 1)
             {
                 var texture = _content.Load<Texture2D>("Pictures/railgun");
-                var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara");
+                var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara2");
                 turn_count = 0;
                 count_combo = 0;
                 _player = new Player(texture)
@@ -183,7 +183,7 @@ namespace AstroFight.States
                 };
                 _celling = new Celling(mother)
                 {
-                    _position = new Vector2(50, -350)
+                    _position = new Vector2(0, -450)
                 };
                 _grid = new int[18, 12]
                 {

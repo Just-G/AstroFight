@@ -28,6 +28,7 @@ namespace AstroFight.States
         public int testtest = 1;
         int initial = 1;
         int count_initial = 0;
+        int maxY = 4;
 
         public Vector2 _origin;
 
@@ -178,7 +179,7 @@ namespace AstroFight.States
             if (count_initial < 1)
             {
                 var texture = _content.Load<Texture2D>("Pictures/railgun");
-                var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara");
+                var mother = _content.Load<Texture2D>("Pictures/CellingBlackhole");
                 turn_count = 0;
                 count_combo = 0;
                 _player = new Player(texture)
@@ -187,17 +188,17 @@ namespace AstroFight.States
                 };
                 _celling = new Celling(mother)
                 {
-                    _position = new Vector2(50, -350)
+                    _position = new Vector2(0, -350)
                 };
                 _grid = new int[18, 12]
                 {
                         {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 },
-                        {-1,1,1,2,2,2,2,2,2,2,2,-1 },
-                        {-1,2,2,0,0,0,2,1,2,2,1,-1 },
-                        {-1,1,1,1,1,1,1,1,1,1,1,-1 },
-                        {-1,0,0,0,0,1,1,1,1,1,1,-1 },
-                        {-1,0,0,0,0,0,0,0,0,0,0,-1 },
-                        {-1,2,3,4,5,1,2,3,4,5,0,-1 },
+                        {-1,5,-1,0,0,0,0,0,0,-1,5,-1 },
+                        {-1,0,5,-1,-1,-1,-1,-1,-1,5,0,-1 },
+                        {-1,0,0,5,5,5,5,5,5,0,0,-1 },
+                        {-1,2,2,2,2,2,2,2,2,2,0,-1 },
+                        {-1,0,0,0,0,3,0,0,0,0,0,-1 },
+                        {-1,0,0,4,2,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
@@ -247,6 +248,7 @@ namespace AstroFight.States
                     if (turn_count == 5)
                     {
                         turn_count = 0;
+                        maxY += 1;
                         cellingDrop();
                         _celling.Update();
                     }
@@ -367,6 +369,7 @@ namespace AstroFight.States
                             };
                             _balltest._direction = _player._rotation;
                             stage = 2;
+                            maxY -= 1;
                             turn_count += 1;
                             type = ran.Next(1, 6);
                         }
@@ -412,6 +415,13 @@ namespace AstroFight.States
                     {
                         _balltest.bout = !_balltest.bout;
                     }
+                    if (_grid[_balltest.yPos - 1, _balltest.xPos] == -1)
+                    {
+                        _grid[_balltest.yPos, _balltest.xPos] = 9;
+                        _grid[ran.Next(maxY, 12), ran.Next(1, 11)] = _balltest.type;
+                        _balltest.state = 1;
+                        stage = 1;
+                    }
                     //if player aim at <75 degree or below && >105 degree
                     if (((_player.mouse < 75 && _player.mouse > 10) && _balltest.bout == true) || ((_player.mouse < 170 && _player.mouse > 105) && _balltest.bout == false))
                     {
@@ -435,7 +445,7 @@ namespace AstroFight.States
                             }
                             else if (_balltest.type == 7)
                             {
-                                _grid = _balltest.colorBucket(_grid,3);
+                                _grid = _balltest.colorBucket(_grid, 3);
                             }
                             else if (_balltest.type == 8)
                             {

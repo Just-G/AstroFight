@@ -35,42 +35,60 @@ namespace AstroFight.States
             var buttonTexture_easy = _content.Load<Texture2D>("Buttons/Easy_Button3");
             var buttonTexture_normal = _content.Load<Texture2D>("Buttons/Normal_Button3");
             var buttonTexture_hard = _content.Load<Texture2D>("Buttons/Hard_Button3");
+            var buttonTexture_Endless = _content.Load<Texture2D>("Buttons/Endless_Button_new");
 
             var easyGameButton = new Button(buttonTexture_easy)
             {
-                Position = new Vector2(210, 428),
+                Position = new Vector2(210, 380),
             };
             easyGameButton.Click += EasyGameButton_Click;
 
             var normalGameButton = new Button(buttonTexture_normal)
             {
-                Position = new Vector2(210, 535),
+                Position = new Vector2(210, 487),
             };
             normalGameButton.Click += NormalGameButton_Click;
 
             var hardGameButton = new Button(buttonTexture_hard)
             {
-                Position = new Vector2(210, 642),
+                Position = new Vector2(210, 594),
             };
             hardGameButton.Click += HardGameButton_Click;
+
+            var endlessGameButton = new Button(buttonTexture_Endless)
+            {
+                Position = new Vector2(210, 710),
+            };
+            endlessGameButton.Click += EndlessGameButton_Click;
 
             _components = new List<Component>()
             {
                 easyGameButton,
                 normalGameButton,
                 hardGameButton,
+                endlessGameButton,
             };
         }
+
+        
         public static bool IsRepeating { get; set; }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(_logo, new Vector2(150, 139), Color.White);
+            spriteBatch.Draw(_logo, new Vector2(150, 105), Color.White);
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
 
             spriteBatch.End();
+        }
+        private void EndlessGameButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new EndlessState(_game, _graphicsDevice, _content));
+            // Sounds
+            MediaPlayer.Stop();
+            //MediaPlayer.Play(_playSong);
+            MediaPlayer.IsRepeating = true;
         }
 
         private void EasyGameButton_Click(object sender, EventArgs e)

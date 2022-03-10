@@ -151,10 +151,16 @@ namespace AstroFight.Controls
             return grid;
         }
 
-        public int[,] colorBucket(int[,] _grid)
+        public int[,] colorBucket(int[,] _grid, int state)
         {
             grid = _grid;
-            color = ran.Next(1, 6);
+            if(state == 1)
+                color = ran.Next(1, 4);
+            else if (state == 2)
+                color = ran.Next(1, 5);
+            else if (state == 3)
+                color = ran.Next(1, 6);
+
             //paint leftup
             for (int i = 0; i <= 2; i++)
             {

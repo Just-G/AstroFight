@@ -405,7 +405,7 @@ namespace AstroFight.States
                             }
                             else if (_balltest.type == 7)
                             {
-                                _grid = _balltest.colorBucket(_grid);
+                                _grid = _balltest.colorBucket(_grid,2);
                             }
                             else if (_balltest.type == 8)
                             {
@@ -442,7 +442,7 @@ namespace AstroFight.States
                             }
                             else if (_balltest.type == 7)
                             {
-                                _grid = _balltest.colorBucket(_grid);
+                                _grid = _balltest.colorBucket(_grid, 2);
                             }
                             else if (_balltest.type == 8)
                             {
@@ -478,7 +478,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid);
+                            _grid = _balltest.colorBucket(_grid, 2);
                         }
                         else if (_balltest.type == 8)
                         {
@@ -513,7 +513,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid);
+                            _grid = _balltest.colorBucket(_grid, 2);
                         }
                         else if (_balltest.type == 8)
                         {
@@ -547,7 +547,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid);
+                            _grid = _balltest.colorBucket(_grid, 2);
                         }
                         else if (_balltest.type == 8)
                         {

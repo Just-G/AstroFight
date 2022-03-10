@@ -11,10 +11,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace AstroFight.States
 {
-    public class EasyGameState : State
+    public class EndlessState : State
     {
         const int TILESIZE = 50;
-        private List<Component> _components;
 
         private Player _player;
         private Ball _balltest;
@@ -31,7 +30,7 @@ namespace AstroFight.States
 
         public Vector2 _origin;
 
-        Texture2D _rect, ship_yello, line, ship_blue, ship_green, boom, bg, railbase, nuke, rainbow, bombline, dish, popupV, popupL;
+        Texture2D _rect, ship_yello, line, ship_blue, ship_green, ship_purple, ship_red, boom, bg, railbase, nuke, rainbow, bombline, dish, popupV, popupL;
         int count = 0;
         int count_combo = 0;
         List<Point> pre_point = new List<Point>();
@@ -43,61 +42,38 @@ namespace AstroFight.States
         float countDuration = 0.5f;
         float currentTime = 0f;
         int type;
-
         bool check_win;
-        public EasyGameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+
+        public EndlessState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             //line = _content.Load<Texture2D>("Line");
-
-            // Sprites
             railbase = _content.Load<Texture2D>("Pictures/BaseG");
             dish = _content.Load<Texture2D>("Pictures/dish");
 
             ship_yello = _content.Load<Texture2D>("Pictures/SpaceShipYello");
             ship_blue = _content.Load<Texture2D>("Pictures/SpaceShipBlue");
             ship_green = _content.Load<Texture2D>("Pictures/SpaceShipGreen");
+            ship_purple = _content.Load<Texture2D>("Pictures/SpaceShipPurple");
+            ship_red = _content.Load<Texture2D>("Pictures/SpaceShipRed");
             nuke = _content.Load<Texture2D>("Pictures/NukeMininlaVersion");
             rainbow = _content.Load<Texture2D>("Pictures/rainbow");
             bombline = _content.Load<Texture2D>("Pictures/item1");
             boom = _content.Load<Texture2D>("Pictures/explode");
-
-            // BG
             bg = _content.Load<Texture2D>("Backgrounds/BackGround");
             popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
             popupL = _content.Load<Texture2D>("Pictures/GameOver2");
-
-            // Buttons
-            var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_LightGray2");
-            var homeButton = new Button(buttonTexture_Home)
-            {
-                Position = new Vector2(470, 830),
-            };
-            homeButton.Click += HomeButton_Click;
-            _components = new List<Component>()
-
-            { homeButton };
-        }
-        private void HomeButton_Click(object sender, EventArgs e)
-        {
-            _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-
             spriteBatch.Draw(bg, new Vector2(0, 0), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             //spriteBatch.Draw(line, new Vector2(0, 750), null, Color.Black, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(railbase, new Vector2(305, 870), null, Color.White, 0f, origin(railbase), 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(dish, new Vector2(150, 850), null, Color.White, 0f, origin(dish), 1f, SpriteEffects.None, 0f);
             _player.Draw(spriteBatch);
-            _celling.Draw(spriteBatch);
-            foreach (var component in _components)
-            {
-                component.Draw(gameTime, spriteBatch);
-            }
-
+            //_celling.Draw(spriteBatch);
             //draw ball
             for (int i = 0; i < 18; i++)
             {
@@ -118,7 +94,15 @@ namespace AstroFight.States
                     else if (_grid[i, j] == 3)
                     {
                         spriteBatch.Draw(ship_green, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.White, 0f, origin(ship_green), 1f, SpriteEffects.None, 0f);
-                    }               
+                    }
+                    else if (_grid[i, j] == 4)
+                    {
+                        spriteBatch.Draw(ship_purple, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.White, 0f, origin(ship_purple), 1f, SpriteEffects.None, 0f);
+                    }
+                    else if (_grid[i, j] == 5)
+                    {
+                        spriteBatch.Draw(ship_red, new Vector2((TILESIZE * j) + 25, (TILESIZE * i) + 25), null, Color.White, 0f, origin(ship_red), 1f, SpriteEffects.None, 0f);
+                    }
                     else if (_grid[i, j] == 6)
                     {
                         spriteBatch.Draw(nuke, new Vector2(TILESIZE * j, TILESIZE * i), null, Color.White, 0f, origin(nuke), 1f, SpriteEffects.None, 0f);
@@ -154,9 +138,6 @@ namespace AstroFight.States
 
                     break;
             }
-
-
-
             spriteBatch.End();
         }
 
@@ -169,22 +150,21 @@ namespace AstroFight.States
         {
             // TODO: Add your update logic here
             //_player.Update();
-
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (count_initial < 1)
             {
                 var texture = _content.Load<Texture2D>("Pictures/railgun");
-                var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara");
+                //var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara");
                 turn_count = 0;
                 count_combo = 0;
                 _player = new Player(texture)
                 {
                     _position = new Vector2(295, 850)
                 };
-                _celling = new Celling(mother)
+                /*_celling = new Celling(mother)
                 {
                     _position = new Vector2(50, -350)
-                };
+                };*/
                 _grid = new int[18, 12]
                 {
                         {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 },
@@ -206,7 +186,7 @@ namespace AstroFight.States
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 }
                 };
-                type = ran.Next(1, 4);
+                type = ran.Next(1, 6);
                 grid_copy = new int[18, 12];
                 grid_copy = _grid;
                 turn_count = 0;
@@ -244,14 +224,15 @@ namespace AstroFight.States
                     {
                         turn_count = 0;
                         cellingDrop();
-                        _celling.Update();
+                        //_celling.Update();
                     }
                     //check lose
                     for (int i = 1; i < 11; i++)
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
-                            _game.ChangeState(new GameOver(_game, _graphicsDevice, _content));
+                            //stage = 3;
+                            _game.ChangeState(new GameOverHard(_game, _graphicsDevice, _content));
                         }
                     }
                     //check win
@@ -265,10 +246,11 @@ namespace AstroFight.States
                             }
                         }
                     }
-                    if (check_win == true)
+                    /*if (check_win == true)
                     {
-                        _game.ChangeState(new Victory(_game, _graphicsDevice, _content));
-                    }
+                        //stage = 4;
+                        _game.ChangeState(new VictoryHard(_game, _graphicsDevice, _content));
+                    }*/
                     //random color
                     switch (type)
                     {
@@ -299,6 +281,24 @@ namespace AstroFight.States
                                 type = 3
                             };
                             break;
+                        case 4:
+                            //var texture_ship_pueple = Content.Load<Texture2D>("SpaceShipPurple");
+                            _balltest = new Ball(ship_purple)
+                            {
+                                _position = new Vector2(300, 850),
+                                _speed = 0,
+                                type = 4
+                            };
+                            break;
+                        case 5:
+                            //var texture_ship_red = Content.Load<Texture2D>("SpaceShipRed");
+                            _balltest = new Ball(ship_red)
+                            {
+                                _position = new Vector2(300, 850),
+                                _speed = 0,
+                                type = 5
+                            };
+                            break;
                     }
                     //show special
                     if (count_combo >= 10)
@@ -325,7 +325,7 @@ namespace AstroFight.States
                         _balltest._speed = 10;
                         turn_count += 1;
                         stage = 2;
-                        type = ran.Next(1, 4);
+                        type = ran.Next(1, 6);
                     }
                     //if right click shoot
                     if (_player._mouseState.RightButton == ButtonState.Pressed &&
@@ -344,7 +344,7 @@ namespace AstroFight.States
                             _balltest._direction = _player._rotation;
                             stage = 2;
                             turn_count += 1;
-                            type = ran.Next(1, 4);
+                            type = ran.Next(1, 6);
                         }
                         else if (count_combo >= 5 && count_combo < 10)
                         {
@@ -359,7 +359,7 @@ namespace AstroFight.States
                             _balltest._direction = _player._rotation;
                             stage = 2;
                             turn_count += 1;
-                            type = ran.Next(1, 4);
+                            type = ran.Next(1, 6);
                         }
                         else if (count_combo >= 2 && count_combo < 5)
                         {
@@ -374,7 +374,7 @@ namespace AstroFight.States
                             _balltest._direction = _player._rotation;
                             stage = 2;
                             turn_count += 1;
-                            type = ran.Next(1, 4);
+                            type = ran.Next(1, 6);
                         }
                     }
                     break;
@@ -411,7 +411,7 @@ namespace AstroFight.States
                             }
                             else if (_balltest.type == 7)
                             {
-                                _grid = _balltest.colorBucket(_grid, 1);
+                                _grid = _balltest.colorBucket(_grid, 3);
                             }
                             else if (_balltest.type == 8)
                             {
@@ -448,7 +448,7 @@ namespace AstroFight.States
                             }
                             else if (_balltest.type == 7)
                             {
-                                _grid = _balltest.colorBucket(_grid,1);
+                                _grid = _balltest.colorBucket(_grid, 3);
                             }
                             else if (_balltest.type == 8)
                             {
@@ -484,7 +484,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid,1);
+                            _grid = _balltest.colorBucket(_grid, 3);
                         }
                         else if (_balltest.type == 8)
                         {
@@ -519,7 +519,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid,1);
+                            _grid = _balltest.colorBucket(_grid, 3);
                         }
                         else if (_balltest.type == 8)
                         {
@@ -553,7 +553,7 @@ namespace AstroFight.States
                         }
                         else if (_balltest.type == 7)
                         {
-                            _grid = _balltest.colorBucket(_grid,1);
+                            _grid = _balltest.colorBucket(_grid, 3);
                         }
                         else if (_balltest.type == 8)
                         {
@@ -793,7 +793,7 @@ namespace AstroFight.States
                 {
                     if (i - 1 <= 0)
                     {
-                        _grid[i, j] = -1;
+                        _grid[i, j] = ran.Next(1, 6); ;
                     }
                     else
                         _grid[i, j] = grid_copy[i - 1, j];

@@ -37,7 +37,7 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/MenuBG.png
 
-#begin Buttons/Easy_Button_New.png
+#begin Buttons/Easy_Button.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -47,9 +47,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Easy_Button_New.png
+/build:Buttons/Easy_Button.png
 
-#begin Buttons/Easy_Button3.png
+#begin Buttons/Endless_Button.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,9 +59,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Easy_Button3.png
+/build:Buttons/Endless_Button.png
 
-#begin Buttons/Endless_Button_New.png
+#begin Buttons/Exit2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,9 +71,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Endless_Button_New.png
+/build:Buttons/Exit2.png
 
-#begin Buttons/Hard_Button_New.png
+#begin Buttons/Hard_Button.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -83,19 +83,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Hard_Button_New.png
-
-#begin Buttons/Hard_Button3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Buttons/Hard_Button3.png
+/build:Buttons/Hard_Button.png
 
 #begin Buttons/Home_LightGray.png
 /importer:TextureImporter
@@ -133,6 +121,42 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/Home_Pink.png
 
+#begin Buttons/Home_Pink2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/Home_Pink2.png
+
+#begin Buttons/Music_Off2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/Music_Off2.png
+
+#begin Buttons/Music_On2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons/Music_On2.png
+
 #begin Buttons/Next.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -145,7 +169,7 @@
 /processorParam:TextureFormat=Color
 /build:Buttons/Next.png
 
-#begin Buttons/Normal_Button_New.png
+#begin Buttons/Normal_Button.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -155,19 +179,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Buttons/Normal_Button_New.png
-
-#begin Buttons/Normal_Button3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Buttons/Normal_Button3.png
+/build:Buttons/Normal_Button.png
 
 #begin Buttons/Restart.png
 /importer:TextureImporter

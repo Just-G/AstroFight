@@ -68,7 +68,7 @@ namespace AstroFight.States
             popupL = _content.Load<Texture2D>("Pictures/GameOver2");
 
             // Buttons
-            var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_LightGray2");
+            var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
             var homeButton = new Button(buttonTexture_Home)
             {
                 Position = new Vector2(470, 830),

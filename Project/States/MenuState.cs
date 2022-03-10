@@ -32,24 +32,25 @@ namespace AstroFight.States
             _logo = _content.Load<Texture2D>("Logo/Title3");
 
             // Buttons
-            var buttonTexture_easy = _content.Load<Texture2D>("Buttons/Easy_Button3");
-            var buttonTexture_normal = _content.Load<Texture2D>("Buttons/Normal_Button3");
-            var buttonTexture_hard = _content.Load<Texture2D>("Buttons/Hard_Button3");
-            var buttonTexture_Endless = _content.Load<Texture2D>("Buttons/Endless_Button_new");
+            var buttonTexture_Easy = _content.Load<Texture2D>("Buttons/Easy_Button");
+            var buttonTexture_Normal = _content.Load<Texture2D>("Buttons/Normal_Button");
+            var buttonTexture_Hard = _content.Load<Texture2D>("Buttons/Hard_Button");
+            var buttonTexture_Endless = _content.Load<Texture2D>("Buttons/Endless_Button");
+            var buttonTexture_Exit = _content.Load<Texture2D>("Buttons/Exit2");
 
-            var easyGameButton = new Button(buttonTexture_easy)
+            var easyGameButton = new Button(buttonTexture_Easy)
             {
                 Position = new Vector2(210, 380),
             };
             easyGameButton.Click += EasyGameButton_Click;
 
-            var normalGameButton = new Button(buttonTexture_normal)
+            var normalGameButton = new Button(buttonTexture_Normal)
             {
                 Position = new Vector2(210, 487),
             };
             normalGameButton.Click += NormalGameButton_Click;
 
-            var hardGameButton = new Button(buttonTexture_hard)
+            var hardGameButton = new Button(buttonTexture_Hard)
             {
                 Position = new Vector2(210, 594),
             };
@@ -57,9 +58,15 @@ namespace AstroFight.States
 
             var endlessGameButton = new Button(buttonTexture_Endless)
             {
-                Position = new Vector2(210, 710),
+                Position = new Vector2(210, 701),
             };
             endlessGameButton.Click += EndlessGameButton_Click;
+
+            var exitGameButton = new Button(buttonTexture_Exit)
+            {
+                Position = new Vector2(520, 820),
+            };
+           exitGameButton.Click += ExitGameButton_Click;
 
             _components = new List<Component>()
             {
@@ -67,9 +74,9 @@ namespace AstroFight.States
                 normalGameButton,
                 hardGameButton,
                 endlessGameButton,
+                exitGameButton,
             };
         }
-
         
         public static bool IsRepeating { get; set; }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -118,6 +125,11 @@ namespace AstroFight.States
             MediaPlayer.IsRepeating = true;
         }
 
+        private void ExitGameButton_Click(object sender, EventArgs e)
+        {
+            _game.Exit();
+        }
+
         public override void PostUpdate(GameTime gameTime)
         {
             // remove sprites if they're not needed
@@ -128,12 +140,5 @@ namespace AstroFight.States
             foreach (var component in _components)
                 component.Update(gameTime);
         }
-
-        /*
-        private void QuitGameButton_Click(object sender, EventArgs e)
-        {
-            _game.Exit();
-        }
-        */
     }
 }

@@ -22,7 +22,6 @@ namespace AstroFight
         private State _currentState;
         private State _nextState;
         private Texture2D _backgroundTexture;
-        private Texture2D _logo;
 
         private List<Component> _components;
 
@@ -52,7 +51,6 @@ namespace AstroFight
             spriteBatch = new SpriteBatch(GraphicsDevice);
             _currentState = new MenuState(this, graphics.GraphicsDevice, Content);
             _backgroundTexture = Content.Load<Texture2D>("Backgrounds/MenuBG");
-            _logo = Content.Load<Texture2D>("Logo/Title3");
         }
 
         protected override void UnloadContent()
@@ -79,10 +77,6 @@ namespace AstroFight
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(_backgroundTexture, new Vector2(0, 0), Color.White);
-            spriteBatch.End();
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(_logo, new Vector2(150, 139), Color.White);
             spriteBatch.End();
 
             _currentState.Draw(gameTime, spriteBatch);

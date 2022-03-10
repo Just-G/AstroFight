@@ -433,6 +433,24 @@
 /processorParam:TextureFormat=Color
 /build:Pictures/VictoryTrophy.png
 
+#begin Sounds/BGM_Redemption.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BGM_Redemption.mp3
+
+#begin Sounds/BGM_TakeAJoyride.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BGM_TakeAJoyride.mp3
+
+#begin Sounds/BGM_ToadallyKrossedOut.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BGM_ToadallyKrossedOut.mp3
+
 #begin Sounds/Lose4.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

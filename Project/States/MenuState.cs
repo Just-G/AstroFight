@@ -16,18 +16,25 @@ namespace AstroFight.States
     {
         private List<Component> _components;
         private Song _backgroundSong;
+        private Song _playSong;
+        private Texture2D _logo;
 
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
+            // BGM
+            _backgroundSong = content.Load<Song>("Sounds/MaskedWolf");
+            _playSong = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(_backgroundSong);
+
+            // Logo
+            _logo = _content.Load<Texture2D>("Logo/Title3");
+
+            // Buttons
             var buttonTexture_easy = _content.Load<Texture2D>("Buttons/Easy_Button3");
             var buttonTexture_normal = _content.Load<Texture2D>("Buttons/Normal_Button3");
             var buttonTexture_hard = _content.Load<Texture2D>("Buttons/Hard_Button3");
-
-            // BGM
-            _backgroundSong = content.Load<Song>("Sounds/MaskedWolf");
-            MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(_backgroundSong);
 
             var easyGameButton = new Button(buttonTexture_easy)
             {
@@ -58,6 +65,7 @@ namespace AstroFight.States
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
+            spriteBatch.Draw(_logo, new Vector2(150, 139), Color.White);
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
@@ -68,16 +76,28 @@ namespace AstroFight.States
         private void EasyGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
+            // Sounds
+            MediaPlayer.Stop();
+            MediaPlayer.Play(_playSong);
+            MediaPlayer.IsRepeating = true;
         }
 
         private void NormalGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
+            // Sounds
+            MediaPlayer.Stop();
+            MediaPlayer.Play(_playSong);
+            MediaPlayer.IsRepeating = true;
         }
 
         private void HardGameButton_Click(object sender, EventArgs e)
         {
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
+            // Sounds
+            MediaPlayer.Stop();
+            MediaPlayer.Play(_playSong);
+            MediaPlayer.IsRepeating = true;
         }
 
         public override void PostUpdate(GameTime gameTime)

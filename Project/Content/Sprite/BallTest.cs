@@ -11,6 +11,7 @@ namespace AstroFight.Content.Sprite
     {
         private int[,] grid;
         private int[,] grid_copy;
+        private Celling _celling;
 
         Random ran = new Random();
 

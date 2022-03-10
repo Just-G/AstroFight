@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using AstroFight.Controls;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace AstroFight.States
 {
@@ -15,6 +16,7 @@ namespace AstroFight.States
     {
         const int TILESIZE = 50;
         private List<Component> _components;
+        private SoundEffect _click;
 
         private Player _player;
         private Ball _balltest;
@@ -65,6 +67,9 @@ namespace AstroFight.States
             popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
             popupL = _content.Load<Texture2D>("Pictures/GameOver2");
 
+            // sfx
+            _click = _content.Load<SoundEffect>("Sounds/perc_click");
+
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
             var homeButton = new Button(buttonTexture_Home)
@@ -78,6 +83,7 @@ namespace AstroFight.States
         }
         private void HomeButton_Click(object sender, EventArgs e)
         {
+            _click.Play();
             _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
         }
 

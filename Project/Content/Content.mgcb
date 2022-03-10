@@ -475,6 +475,12 @@
 /processorParam:Quality=Best
 /build:Sounds/BGM_ToadallyKrossedOut.mp3
 
+#begin Sounds/Click.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Click.mp3
+
 #begin Sounds/Lose4.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -486,6 +492,12 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:Sounds/MaskedWolf.mp3
+
+#begin Sounds/perc_click.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/perc_click.wav
 
 #begin Sounds/Pop.mp3
 /importer:Mp3Importer

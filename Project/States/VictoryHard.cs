@@ -8,16 +8,22 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using AstroFight.Controls;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace AstroFight.States
 {
     public class VictoryHard : State
     {
         private List<Component> _components;
+        private SoundEffect _click;
         Texture2D popupV;
         public VictoryHard(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
+            // sfx
+            _click = _content.Load<SoundEffect>("Sounds/perc_click");
+
+            // buttons
             var buttonTexture_home = _content.Load<Texture2D>("Buttons/Home_Pink");
             var buttonTexture_restart = _content.Load<Texture2D>("Buttons/Restart");
             var buttonTexture_nextlevel = _content.Load<Texture2D>("Buttons/Next");
@@ -67,12 +73,14 @@ namespace AstroFight.States
         private void RestartGameButton_Click(object sender, EventArgs e)
         {
             //Restart
+            _click.Play();
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
         }
 
         private void HomeGameButton_Click(object sender, EventArgs e)
         {
             //Home
+            _click.Play();
             _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
         }
 

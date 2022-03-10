@@ -16,7 +16,8 @@ namespace AstroFight.States
     {
         const int TILESIZE = 50;
         private List<Component> _components;
-        private SoundEffect _click;
+        private SoundEffect _click, _shoot, _pop, _explosion, _alert;
+        private SoundEffect _win, _lose;
 
         private Player _player;
         private Ball _balltest;
@@ -70,6 +71,14 @@ namespace AstroFight.States
 
             // sfx
             _click = _content.Load<SoundEffect>("Sounds/perc_click");
+            /*
+            _shoot = _content.Load<SoundEffect>("Sounds/");
+            _pop = _content.Load<SoundEffect>("Sounds/");
+            _explosion = _content.Load<SoundEffect>("Sounds/");
+            _alert = _content.Load<SoundEffect>("Sounds/");
+            _win = _content.Load<SoundEffect>("Sounds/");
+            _lose = _content.Load<SoundEffect>("Sounds/");
+            */
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");

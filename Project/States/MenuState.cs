@@ -16,8 +16,7 @@ namespace AstroFight.States
     {
         private List<Component> _components;
         private Texture2D _logo;
-        private Song _backgroundSong;
-        private Song _playSong;
+        private Song _backgroundSong, _playSong;
         private SoundEffect _click;
 
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)

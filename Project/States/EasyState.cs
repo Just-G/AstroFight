@@ -170,6 +170,9 @@ namespace AstroFight.States
             // TODO: Add your update logic here
             //_player.Update();
 
+            foreach (var component in _components)
+                component.Update(gameTime);
+
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (count_initial < 1)
             {

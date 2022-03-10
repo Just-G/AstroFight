@@ -14,6 +14,7 @@ namespace AstroFight.States
     public class HardGameState : State
     {
         const int TILESIZE = 50;
+        private List<Component> _components;
 
         private Player _player;
         private Ball _balltest;
@@ -63,6 +64,21 @@ namespace AstroFight.States
             bg = _content.Load<Texture2D>("Backgrounds/BackGround");
             popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
             popupL = _content.Load<Texture2D>("Pictures/GameOver2");
+
+            // Buttons
+            var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_LightGray2");
+            var homeButton = new Button(buttonTexture_Home)
+            {
+                Position = new Vector2(470, 830),
+            };
+            homeButton.Click += HomeButton_Click;
+            _components = new List<Component>()
+
+            { homeButton };
+        }
+        private void HomeButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new MenuState(_game, _graphicsDevice, _content));
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -74,6 +90,10 @@ namespace AstroFight.States
             spriteBatch.Draw(dish, new Vector2(150, 850), null, Color.White, 0f, origin(dish), 1f, SpriteEffects.None, 0f);
             _player.Draw(spriteBatch);
             _celling.Draw(spriteBatch);
+            foreach (var component in _components)
+            {
+                component.Draw(gameTime, spriteBatch);
+            }
             //draw ball
             for (int i = 0; i < 18; i++)
             {
@@ -150,6 +170,10 @@ namespace AstroFight.States
         {
             // TODO: Add your update logic here
             //_player.Update();
+
+            foreach (var component in _components)
+                component.Update(gameTime);
+
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (count_initial < 1)
             {

@@ -11,11 +11,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace AstroFight.States
 {
-    public class Victory : State
+    public class VictoryHard : State
     {
         private List<Component> _components;
         Texture2D popupV;
-        public Victory(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public VictoryHard(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             var buttonTexture_home = _content.Load<Texture2D>("Buttons/Home_Pink");
@@ -26,32 +26,30 @@ namespace AstroFight.States
 
             var homeGameButton = new Button(buttonTexture_home)
             {
-                Position = new Vector2(100, 550),
+                Position = new Vector2(150, 550),
             };
             homeGameButton.Click += HomeGameButton_Click;
 
             var restartGameButton = new Button(buttonTexture_restart)
             {
-                Position = new Vector2(249, 550),
+                Position = new Vector2(350, 550),
             };
             restartGameButton.Click += RestartGameButton_Click;
 
-            var nextlevelButton = new Button(buttonTexture_nextlevel)
-            {
-                Position = new Vector2(398, 550),
-            };
-            nextlevelButton.Click += NextlevelGameButton_Click;
 
             _components = new List<Component>()
             {
                 homeGameButton,
                 restartGameButton,
-                nextlevelButton,
             };
 
         }
         public static bool IsRepeating { get; set; }
 
+        private void NextlevelButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -65,16 +63,11 @@ namespace AstroFight.States
             spriteBatch.End();
         }
 
-        private void NextlevelGameButton_Click(object sender, EventArgs e)
-        {
-            //Nextlevel
-            _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
-        }
 
         private void RestartGameButton_Click(object sender, EventArgs e)
         {
             //Restart
-            _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
         }
 
         private void HomeGameButton_Click(object sender, EventArgs e)
@@ -96,3 +89,4 @@ namespace AstroFight.States
         }
     }
 }
+

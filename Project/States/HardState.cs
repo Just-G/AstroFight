@@ -232,7 +232,7 @@ namespace AstroFight.States
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
                             //stage = 3;
-                            _game.ChangeState(new GameOver(_game, _graphicsDevice, _content));
+                            _game.ChangeState(new GameOverHard(_game, _graphicsDevice, _content));
                         }
                     }
                     //check win
@@ -249,7 +249,7 @@ namespace AstroFight.States
                     if (check_win == true)
                     {
                         //stage = 4;
-                        _game.ChangeState(new Victory(_game, _graphicsDevice, _content));
+                        _game.ChangeState(new VictoryHard(_game, _graphicsDevice, _content));
                     }
                     //random color
                     switch (type)
@@ -535,7 +535,7 @@ namespace AstroFight.States
                         stage = 1;
                     }
                     //up
-                    else if (_grid[_balltest.yPos - 1, _balltest.xPos] != 0 && _grid[_balltest.yPos, _balltest.xPos] == 0)
+                    if (_grid[_balltest.yPos - 1, _balltest.xPos] != 0 && _grid[_balltest.yPos, _balltest.xPos] == 0)
                     {
                         _grid[_balltest.yPos, _balltest.xPos] = _balltest.type;
                         _balltest.state = 1;

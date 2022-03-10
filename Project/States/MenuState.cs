@@ -78,7 +78,7 @@ namespace AstroFight.States
             _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
             // Sounds
             MediaPlayer.Stop();
-            MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_playSong);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -87,7 +87,7 @@ namespace AstroFight.States
             _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
             // Sounds
             MediaPlayer.Stop();
-            MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_playSong);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -96,7 +96,7 @@ namespace AstroFight.States
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
             // Sounds
             MediaPlayer.Stop();
-            MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_playSong);
             MediaPlayer.IsRepeating = true;
         }
 

@@ -57,6 +57,7 @@ namespace AstroFight.States
         private void RestartGameButton_Click(object sender, EventArgs e)
         {
             //Restart
+            _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
         }
 
         private void HomeGameButton_Click(object sender, EventArgs e)

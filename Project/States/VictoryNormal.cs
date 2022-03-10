@@ -11,11 +11,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace AstroFight.States
 {
-    public class Victory : State
+    public class VictoryNormal : State
     {
         private List<Component> _components;
         Texture2D popupV;
-        public Victory(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public VictoryNormal(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             var buttonTexture_home = _content.Load<Texture2D>("Buttons/Home_Pink");
@@ -52,7 +52,6 @@ namespace AstroFight.States
         }
         public static bool IsRepeating { get; set; }
 
-
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
@@ -68,13 +67,13 @@ namespace AstroFight.States
         private void NextlevelGameButton_Click(object sender, EventArgs e)
         {
             //Nextlevel
-            _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
         }
 
         private void RestartGameButton_Click(object sender, EventArgs e)
         {
             //Restart
-            _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
         }
 
         private void HomeGameButton_Click(object sender, EventArgs e)
@@ -96,3 +95,4 @@ namespace AstroFight.States
         }
     }
 }
+

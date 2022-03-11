@@ -47,6 +47,8 @@ namespace AstroFight.States
         float currentTime = 0f;
         int type;
         bool check_win;
+
+        bool check_effect = true;
         public NormalGameState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
@@ -68,14 +70,14 @@ namespace AstroFight.States
 
             // sfx
             _click = _content.Load<SoundEffect>("Sounds/perc_click");
-            /*
-            _shoot = _content.Load<SoundEffect>("Sounds/");
-            _pop = _content.Load<SoundEffect>("Sounds/");
-            _explosion = _content.Load<SoundEffect>("Sounds/");
-            _alert = _content.Load<SoundEffect>("Sounds/");
-            _win = _content.Load<SoundEffect>("Sounds/");
-            _lose = _content.Load<SoundEffect>("Sounds/");
-            */
+            
+            //_shoot = _content.Load<SoundEffect>("Sounds/");
+            //_pop = _content.Load<SoundEffect>("Sounds/");
+            //_explosion = _content.Load<SoundEffect>("Sounds/");
+            _alert = _content.Load<SoundEffect>("Sounds/siren2");
+            //_win = _content.Load<SoundEffect>("Sounds/");
+            //_lose = _content.Load<SoundEffect>("Sounds/");
+            
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
@@ -263,9 +265,15 @@ namespace AstroFight.States
                         count_combo += count;
                     }
                     count = 0;
+                    if (turn_count == 4 && check_effect == true)
+                    {
+                        _alert.Play();
+                        check_effect = false;
+                    }
                     //celling dropping
                     if (turn_count == 5)
                     {
+                        check_effect = true;
                         turn_count = 0;
                         cellingDrop();
                         _celling.Update();
@@ -601,6 +609,8 @@ namespace AstroFight.States
                         }
                         stage = 1;
                     }
+                    else if (_grid[_balltest.yPos - 1, _balltest.xPos] == -1 && _grid[_balltest.yPos, _balltest.xPos] != 0)
+                        _balltest.state = 1;
                     break;
                 //System.Diagnostics.Debug.WriteLine(_balltest._position.X);
                 case 3:

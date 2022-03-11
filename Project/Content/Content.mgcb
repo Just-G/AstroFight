@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../../../Desktop/siren2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../../../../../Desktop/siren2.wav;Sounds/siren2.wav
+
 #begin Backgrounds/BackGround.png
 /importer:TextureImporter
 /processor:TextureProcessor

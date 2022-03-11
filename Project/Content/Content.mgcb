@@ -547,6 +547,12 @@
 /processorParam:TextureFormat=Color
 /build:Pictures/VictoryTrophy.png
 
+#begin Sounds/BGM_Blue Star.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BGM_Blue Star.mp3
+
 #begin Sounds/BGM_Gundam.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

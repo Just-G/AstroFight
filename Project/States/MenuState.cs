@@ -14,6 +14,7 @@ namespace AstroFight.States
 {
     public class MenuState : State
     {
+        private const double V = 0.5;
         private List<Component> _components;
         private Texture2D _logo;
         private Song _backgroundSong, _bgEasy, _bgNormal, _bgHard, _bgEndless;
@@ -40,6 +41,11 @@ namespace AstroFight.States
             var buttonTexture_Hard = _content.Load<Texture2D>("Buttons/Hard_Button");
             var buttonTexture_Endless = _content.Load<Texture2D>("Buttons/Endless_Button");
             var buttonTexture_Exit = _content.Load<Texture2D>("Buttons/Exit2");
+
+            _bgEasy = _content.Load<Song>("Sounds/BGM_TakeAjoyride");
+            _bgNormal = _content.Load<Song>("Sounds/BGM_Gundam");
+            _bgHard = _content.Load<Song>("Sounds/BGM_Blue Star");
+            _bgEndless = _content.Load<Song>("Sounds/BGM_Redemption");
 
             var easyGameButton = new Button(buttonTexture_Easy)
             {
@@ -105,6 +111,7 @@ namespace AstroFight.States
             _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
+            MediaPlayer.Play(_bgEasy);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -114,6 +121,8 @@ namespace AstroFight.States
             _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
+            MediaPlayer.Play(_bgNormal);
+            MediaPlayer.Volume = 0.4f;
             MediaPlayer.IsRepeating = true;
         }
 
@@ -123,6 +132,7 @@ namespace AstroFight.States
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
+            MediaPlayer.Play(_bgHard);
             MediaPlayer.IsRepeating = true;
         }
         private void EndlessGameButton_Click(object sender, EventArgs e)
@@ -131,6 +141,7 @@ namespace AstroFight.States
             _game.ChangeState(new EndlessState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
+            MediaPlayer.Play(_bgEndless);
             MediaPlayer.IsRepeating = true;
         }
 

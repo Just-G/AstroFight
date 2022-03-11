@@ -82,10 +82,6 @@ namespace AstroFight.States
             _win = _content.Load<Song>("Sounds/Win");
             _lose = _content.Load<Song>("Sounds/Lose4");
 
-            //BGM
-            _bgm = _content.Load<Song>("Sounds/BGM_Redemption");
-            MediaPlayer.Play(_bgm);
-
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
@@ -406,19 +402,19 @@ namespace AstroFight.States
                             break;
                     }
                     //show special
-                    if (count_combo >= 10)
+                    if (count_combo >= 15)
                     {
-                        _grid[17, 3] = 6;
+                        _grid[17, 3] = 8; // cut
                     }
-                    else if (count_combo >= 5 && count_combo < 10)
+                    else if (count_combo >= 10 && count_combo < 15)
                     {
-                        _grid[17, 3] = 7;
+                        _grid[17, 3] = 6; //nuke
                     }
-                    else if (count_combo >= 2 && count_combo < 5)
+                    else if (count_combo >= 6 && count_combo < 10)
                     {
-                        _grid[17, 3] = 8;
+                        _grid[17, 3] = 7; //color
                     }
-                    else if (count_combo < 5)
+                    else if (count_combo < 6)
                     {
                         _grid[17, 3] = 0;
                     }
@@ -437,7 +433,7 @@ namespace AstroFight.States
                     if (_player._mouseState.RightButton == ButtonState.Pressed &&
                         _player._previousMouseState.RightButton == ButtonState.Released)
                     {
-                        if (count_combo >= 10)
+                        if (count_combo >= 10 && count_combo < 15)
                         {
                             count_combo = 0;
                             var texture_nuke = _content.Load<Texture2D>("Pictures/NukeMininlaVersion");
@@ -452,7 +448,7 @@ namespace AstroFight.States
                             turn_count += 1;
                             type = ran.Next(1, 4);
                         }
-                        else if (count_combo >= 5 && count_combo < 10)
+                        else if (count_combo >= 6 && count_combo < 10)
                         {
                             count_combo = 0;
                             var texture_colorfull = _content.Load<Texture2D>("Pictures/rainbow");
@@ -467,7 +463,7 @@ namespace AstroFight.States
                             turn_count += 1;
                             type = ran.Next(1, 4);
                         }
-                        else if (count_combo >= 2 && count_combo < 5)
+                        else if (count_combo >= 15)
                         {
                             count_combo = 0;
                             var texture_line = _content.Load<Texture2D>("Pictures/item1");

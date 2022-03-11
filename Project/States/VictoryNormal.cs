@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AstroFight.Controls;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace AstroFight.States
 {
@@ -16,6 +17,7 @@ namespace AstroFight.States
     {
         private List<Component> _components;
         private SoundEffect _click;
+        private Song _bgHard;
         Texture2D popupV;
         public VictoryNormal(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
@@ -27,6 +29,8 @@ namespace AstroFight.States
             var buttonTexture_home = _content.Load<Texture2D>("Buttons/Home_Pink");
             var buttonTexture_restart = _content.Load<Texture2D>("Buttons/Restart");
             var buttonTexture_nextlevel = _content.Load<Texture2D>("Buttons/Next");
+
+            _bgHard = _content.Load<Song>("Sounds/BGM_Blue Star");
 
             popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
 
@@ -74,6 +78,7 @@ namespace AstroFight.States
         {
             //Nextlevel
             _click.Play();
+            MediaPlayer.Play(_bgHard);
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
         }
 

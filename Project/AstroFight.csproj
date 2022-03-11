@@ -9,6 +9,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Icon.ico" />
+		<EmbeddedResource Include="Icon.bmp" />
+	</ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>

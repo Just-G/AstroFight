@@ -208,10 +208,10 @@ namespace AstroFight.States
                 _grid = new int[18, 12]
                 {
                         {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1 },
-                        {-1,1,1,2,2,2,2,2,2,2,2,-1 },
-                        {-1,2,2,0,0,0,2,1,2,2,1,-1 },
-                        {-1,1,1,1,1,1,1,1,1,1,1,-1 },
-                        {-1,0,0,0,0,1,1,1,1,1,1,-1 },
+                        {-1,0,0,0,0,0,0,0,0,0,0,-1 },
+                        {-1,0,0,0,0,0,0,0,0,0,0,-1 },
+                        {-1,0,0,0,0,0,0,0,0,0,0,-1 },
+                        {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
@@ -226,6 +226,14 @@ namespace AstroFight.States
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 },
                         {-1,0,0,0,0,0,0,0,0,0,0,-1 }
                 };
+                for (int i = 1; i <= 5; i++)
+                {
+                    for (int j = 1; j <= 10; j++)
+                    {
+                        _grid[i,j] = ran.Next(1, 6); ;
+                    }
+                }
+                    
                 type = ran.Next(1, 6);
                 grid_copy = new int[18, 12];
                 grid_copy = _grid;
@@ -638,6 +646,8 @@ namespace AstroFight.States
                         }
                         stage = 1;
                     }
+                    else if (_grid[_balltest.yPos - 1, _balltest.xPos] == -1 && _grid[_balltest.yPos, _balltest.xPos] != 0)
+                        _balltest.state = 1;
                     break;
                 //System.Diagnostics.Debug.WriteLine(_balltest._position.X);
                 case 3:

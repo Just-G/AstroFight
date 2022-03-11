@@ -90,10 +90,24 @@ namespace AstroFight.States
                 Position = new Vector2(470, 830),
             };
             homeButton.Click += HomeButton_Click;
+
+            var buttonTexture_Restart = _content.Load<Texture2D>("Buttons/Restart2");
+            var restartButton = new Button(buttonTexture_Restart)
+            {
+                Position = new Vector2(540, 830),
+            };
+            restartButton.Click += RestartButton_Click;
+
             _components = new List<Component>()
 
-            { homeButton };
+            { homeButton, restartButton };
         }
+
+        private void RestartButton_Click(object sender, EventArgs e)
+        {
+            _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
+        }
+
         private void HomeButton_Click(object sender, EventArgs e)
         {
             _click.Play();

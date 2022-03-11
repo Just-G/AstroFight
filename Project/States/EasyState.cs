@@ -94,14 +94,22 @@ namespace AstroFight.States
                 Position = new Vector2(470, 830),
             };
             homeButton.Click += HomeButton_Click;
+
+            var buttonTexture_Restart = _content.Load<Texture2D>("Buttons/Restart2");
+            var restartButton = new Button(buttonTexture_Restart)
+            {
+                Position = new Vector2(540, 830),
+            };
+            restartButton.Click += RestartButton_Click;
+
             _components = new List<Component>()
 
-            { homeButton, };
+            { homeButton, restartButton};
         }
 
         private void RestartButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -277,7 +285,7 @@ namespace AstroFight.States
                         check_effect = false;
                     }
                     //chain explosion
-                    for (int i = 1; i < 15; i++)
+                    /*for (int i = 1; i < 15; i++)
                     {
                         for (int j = 1; j < 11; j++)
                         {
@@ -286,6 +294,49 @@ namespace AstroFight.States
                             {
                                 _grid[i, j] = 9;
                             }
+                        }
+                    }*/
+                    for (int i = 1; i < 15; i++)
+                    {
+                        for (int j = 1; j < 11; j++)
+                        {
+                            if ((_grid[i - 1, j - 1] == 0 || _grid[i - 1, j - 1] == -1) && _grid[i - 1, j] == 0 && (_grid[i - 1, j + 1] == 0 || _grid[i - 1, j + 1] == -1) && _grid[i, j] != 0)
+                            {
+                                int jleft = j - 1;
+                                int jright = j + 1;
+                                bool levi = true;
+                                while (_grid[i, jleft] != 0 && _grid[i, jleft] != -1)
+                                {
+                                    if ((_grid[i - 1, jleft - 1] == 0 || _grid[i - 1, jleft - 1] == -1) && _grid[i - 1, jleft] == 0 && (_grid[i - 1, jleft + 1] == 0 || _grid[i - 1, jleft + 1] == -1) && _grid[i, jleft] != 0)
+                                    {
+                                        levi = true;
+                                        jleft--;
+                                    }
+                                    else
+                                    {
+                                        levi = false;
+                                        break;
+                                    }
+                                }
+                                while (_grid[i, jright] != 0 && _grid[i, jright] != -1)
+                                {
+                                    if ((_grid[i - 1, jright - 1] == 0 || _grid[i - 1, jright - 1] == -1) && _grid[i - 1, jright] == 0 && (_grid[i - 1, jright + 1] == 0 || _grid[i - 1, jright + 1] == -1) && _grid[i, jright] != 0)
+                                    {
+                                        levi = true;
+                                        jright++;
+                                    }
+                                    else
+                                    {
+                                        levi = false;
+                                        break;
+                                    }
+                                }
+                                if (levi == true)
+                                {
+                                    _grid[i, j] = 9;
+                                }
+                            }
+
                         }
                     }
                     //celling dropping

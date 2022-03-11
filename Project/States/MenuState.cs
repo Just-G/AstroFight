@@ -16,7 +16,7 @@ namespace AstroFight.States
     {
         private List<Component> _components;
         private Texture2D _logo;
-        private Song _backgroundSong, _playSong;
+        private Song _backgroundSong, _bgEasy, _bgNormal, _bgHard, _bgEndless;
         private SoundEffect _click;
 
         public MenuState(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -24,7 +24,12 @@ namespace AstroFight.States
         {
             // BGM
             _backgroundSong = content.Load<Song>("Sounds/MaskedWolf");
-            _playSong = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+
+            _bgEasy = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+            _bgNormal = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+            _bgHard = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+            _bgEndless = content.Load<Song>("Sounds/BGM_ToadallyKrossedOut");
+
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(_backgroundSong);
 
@@ -105,7 +110,7 @@ namespace AstroFight.States
             _game.ChangeState(new EasyGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
-            //MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_bgEasy);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -115,7 +120,7 @@ namespace AstroFight.States
             _game.ChangeState(new NormalGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
-            //MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_bgNormal);
             MediaPlayer.IsRepeating = true;
         }
 
@@ -125,7 +130,7 @@ namespace AstroFight.States
             _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
-            //MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_bgHard);
             MediaPlayer.IsRepeating = true;
         }
         private void EndlessGameButton_Click(object sender, EventArgs e)
@@ -134,7 +139,7 @@ namespace AstroFight.States
             _game.ChangeState(new EndlessState(_game, _graphicsDevice, _content));
             // BGM
             MediaPlayer.Stop();
-            //MediaPlayer.Play(_playSong);
+            //MediaPlayer.Play(_bgEndless);
             MediaPlayer.IsRepeating = true;
         }
 

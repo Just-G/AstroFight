@@ -487,6 +487,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Click.mp3
 
+#begin Sounds/Explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Explosion.wav
+
+#begin Sounds/Lose.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Lose.wav
+
 #begin Sounds/Lose4.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -505,9 +517,15 @@
 /processorParam:Quality=Best
 /build:Sounds/perc_click.wav
 
-#begin Sounds/Pop.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin Sounds/Pop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Pop.mp3
+/build:Sounds/Pop.wav
+
+#begin Sounds/Shootsound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Shootsound.wav
 

@@ -70,13 +70,13 @@ namespace AstroFight.States
 
             // sfx
             _click = _content.Load<SoundEffect>("Sounds/perc_click");
-            
-            //_shoot = _content.Load<SoundEffect>("Sounds/");
-            //_pop = _content.Load<SoundEffect>("Sounds/");
-            //_explosion = _content.Load<SoundEffect>("Sounds/");
+
+            _shoot = _content.Load<SoundEffect>("Sounds/Shootsound");
+            _pop = _content.Load<SoundEffect>("Sounds/Pop");
+            _explosion = _content.Load<SoundEffect>("Sounds/Explosion");
             _alert = _content.Load<SoundEffect>("Sounds/siren2");
             //_win = _content.Load<SoundEffect>("Sounds/");
-            //_lose = _content.Load<SoundEffect>("Sounds/");
+            _lose = _content.Load<SoundEffect>("Sounds/Lose");
             
 
             // Buttons
@@ -283,6 +283,7 @@ namespace AstroFight.States
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
+                            _lose.Play();
                             _game.ChangeState(new GameOverNormal(_game, _graphicsDevice, _content));
                         }
                     }
@@ -362,6 +363,7 @@ namespace AstroFight.States
                     if (_player._mouseState.LeftButton == ButtonState.Pressed &&
                         _player._previousMouseState.LeftButton == ButtonState.Released)
                     {
+                        _shoot.Play();
                         _balltest._direction = _player._rotation;
                         _balltest._speed = 10;
                         turn_count += 1;
@@ -448,6 +450,7 @@ namespace AstroFight.States
                                     _celling._position.Y -= 50;
                                 }
                                 _grid = _balltest.nuclear(_grid);
+                                _explosion.Play();
                                 turn_count -= 1;
                             }
                             else if (_balltest.type == 7)
@@ -460,6 +463,7 @@ namespace AstroFight.States
                             }
                             else if (count >= 2)
                             {
+                                _pop.Play();
                                 foreach (Point p in pre_point)
                                 {
                                     _grid[p.X, p.Y] = 9;
@@ -485,6 +489,7 @@ namespace AstroFight.States
                                     _celling._position.Y -= 50;
                                 }
                                 _grid = _balltest.nuclear(_grid);
+                                _explosion.Play();
                                 turn_count -= 1;
                             }
                             else if (_balltest.type == 7)
@@ -497,6 +502,7 @@ namespace AstroFight.States
                             }
                             else if (count >= 2)
                             {
+                                _pop.Play();
                                 foreach (Point p in pre_point)
                                 {
                                     _grid[p.X, p.Y] = 9;
@@ -521,6 +527,7 @@ namespace AstroFight.States
                                 _celling._position.Y -= 50;
                             }
                             _grid = _balltest.nuclear(_grid);
+                            _explosion.Play();
                             turn_count -= 1;
                         }
                         else if (_balltest.type == 7)
@@ -533,6 +540,7 @@ namespace AstroFight.States
                         }
                         else if (count >= 2)
                         {
+                            _pop.Play();
                             foreach (Point p in pre_point)
                             {
                                 _grid[p.X, p.Y] = 9;
@@ -556,6 +564,7 @@ namespace AstroFight.States
                                 _celling._position.Y -= 50;
                             }
                             _grid = _balltest.nuclear(_grid);
+                            _explosion.Play();
                             turn_count -= 1;
                         }
                         else if (_balltest.type == 7)
@@ -568,6 +577,7 @@ namespace AstroFight.States
                         }
                         else if (count >= 2)
                         {
+                            _pop.Play();
                             foreach (Point p in pre_point)
                             {
                                 _grid[p.X, p.Y] = 9;
@@ -590,6 +600,7 @@ namespace AstroFight.States
                                 _celling._position.Y -= 50;
                             }
                             _grid = _balltest.nuclear(_grid);
+                            _explosion.Play();
                             turn_count -= 1;
                         }
                         else if (_balltest.type == 7)
@@ -602,6 +613,7 @@ namespace AstroFight.States
                         }
                         else if (count >= 2)
                         {
+                            _pop.Play();
                             foreach (Point p in pre_point)
                             {
                                 _grid[p.X, p.Y] = 9;

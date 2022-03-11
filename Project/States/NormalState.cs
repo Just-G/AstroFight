@@ -76,7 +76,7 @@ namespace AstroFight.States
             _shoot = _content.Load<SoundEffect>("Sounds/Shootsound");
             _pop = _content.Load<SoundEffect>("Sounds/Pop");
             _explosion = _content.Load<SoundEffect>("Sounds/Explosion");
-            _alert = _content.Load<SoundEffect>("Sounds/siren2");
+            _alert = _content.Load<SoundEffect>("Sounds/Siren");
             _win = _content.Load<Song>("Sounds/Win");
             _lose = _content.Load<Song>("Sounds/Lose4");
 

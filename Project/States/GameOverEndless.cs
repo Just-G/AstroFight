@@ -12,12 +12,12 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace AstroFight.States
 {
-    public class VictoryHard : State
+    public class GameOverEndless : State
     {
         private List<Component> _components;
         private SoundEffect _click;
-        Texture2D popupV;
-        public VictoryHard(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        Texture2D popupL;
+        public GameOverEndless(Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
           : base(game, graphicsDevice, content)
         {
             // sfx
@@ -26,9 +26,7 @@ namespace AstroFight.States
             // buttons
             var buttonTexture_home = _content.Load<Texture2D>("Buttons/Home_Pink");
             var buttonTexture_restart = _content.Load<Texture2D>("Buttons/Restart");
-            var buttonTexture_nextlevel = _content.Load<Texture2D>("Buttons/Next");
-
-            popupV = _content.Load<Texture2D>("Pictures/VictoryCoin");
+            popupL = _content.Load<Texture2D>("Pictures/GameOver2");
 
             var homeGameButton = new Button(buttonTexture_home)
             {
@@ -42,26 +40,19 @@ namespace AstroFight.States
             };
             restartGameButton.Click += RestartGameButton_Click;
 
-
             _components = new List<Component>()
             {
                 homeGameButton,
                 restartGameButton,
             };
-
         }
         public static bool IsRepeating { get; set; }
-
-        private void NextlevelButton_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
 
-            spriteBatch.Draw(popupV, new Vector2(100, 100), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(popupL, new Vector2(100, 100), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
 
             foreach (var component in _components)
                 component.Draw(gameTime, spriteBatch);
@@ -69,12 +60,11 @@ namespace AstroFight.States
             spriteBatch.End();
         }
 
-
         private void RestartGameButton_Click(object sender, EventArgs e)
         {
             //Restart
             _click.Play();
-            _game.ChangeState(new HardGameState(_game, _graphicsDevice, _content));
+            _game.ChangeState(new EndlessState(_game, _graphicsDevice, _content));
         }
 
         private void HomeGameButton_Click(object sender, EventArgs e)

@@ -451,6 +451,18 @@
 /processorParam:TextureFormat=Color
 /build:Pictures/SpaceShipYello.png
 
+#begin Pictures/VictoryCoin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pictures/VictoryCoin.png
+
 #begin Pictures/VictoryTrophy.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -462,6 +474,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Pictures/VictoryTrophy.png
+
+#begin Sounds/BGM_Gundam.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BGM_Gundam.mp3
 
 #begin Sounds/BGM_Redemption.mp3
 /importer:Mp3Importer

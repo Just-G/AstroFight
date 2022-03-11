@@ -80,6 +80,9 @@ namespace AstroFight.States
             _alert = _content.Load<SoundEffect>("Sounds/siren2");
             //_win = _content.Load<SoundEffect>("Sounds/");
             _lose = _content.Load<SoundEffect>("Sounds/Lose");
+
+            //BGM
+
             
 
             // Buttons

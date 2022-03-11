@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AstroFight.Controls;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace AstroFight.States
 {
@@ -18,6 +19,7 @@ namespace AstroFight.States
         private List<Component> _components;
         private SoundEffect _click, _shoot, _pop, _explosion, _alert;
         private SoundEffect _win, _lose;
+        private Song _bgNormal;
 
         private Player _player;
         private Ball _balltest;
@@ -77,7 +79,9 @@ namespace AstroFight.States
             _alert = _content.Load<SoundEffect>("Sounds/siren2");
             //_win = _content.Load<SoundEffect>("Sounds/");
             _lose = _content.Load<SoundEffect>("Sounds/Lose");
-            
+
+            //BGM
+            _bgNormal = content.Load<Song>("Sounds/BGM_Gundam");
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
@@ -295,6 +299,7 @@ namespace AstroFight.States
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
+                            MediaPlayer.Stop();
                             _lose.Play();
                             _game.ChangeState(new GameOverNormal(_game, _graphicsDevice, _content));
                         }
@@ -312,6 +317,7 @@ namespace AstroFight.States
                     }
                     if (check_win == true)
                     {
+                        MediaPlayer.Stop();
                         _game.ChangeState(new VictoryNormal(_game, _graphicsDevice, _content));
                     }
                     //random color

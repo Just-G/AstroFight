@@ -264,6 +264,18 @@ namespace AstroFight.States
                         _alert.Play();
                         check_effect = false;
                     }
+                    //chain explosion
+                    for (int i = 1; i < 15; i++)
+                    {
+                        for (int j = 1; j < 11; j++)
+                        {
+
+                            if ((_grid[i - 1, j - 1] == 0 || _grid[i - 1, j - 1] == -1) && _grid[i - 1, j] == 0 && (_grid[i - 1, j + 1] == 0 || _grid[i - 1, j + 1] == -1) && _grid[i, j] != 0)
+                            {
+                                _grid[i, j] = 9;
+                            }
+                        }
+                    }
                     //celling dropping
                     if (turn_count == 5)
                     {

@@ -18,8 +18,8 @@ namespace AstroFight.States
         const int TILESIZE = 50;
         private List<Component> _components;
         private SoundEffect _click, _shoot, _pop, _explosion, _alert;
-        private SoundEffect _win, _lose;
-        private Song _bgNormal;
+        private SoundEffect _bgNormal;
+        private Song _win, _lose;
 
         private Player _player;
         private Ball _balltest;
@@ -66,7 +66,7 @@ namespace AstroFight.States
             rainbow = _content.Load<Texture2D>("Pictures/rainbow");
             bombline = _content.Load<Texture2D>("Pictures/item1");
             boom = _content.Load<Texture2D>("Pictures/explode");
-            bg = _content.Load<Texture2D>("Backgrounds/BackGround");
+            bg = _content.Load<Texture2D>("Pictures/bgnm");
             popupV = _content.Load<Texture2D>("Pictures/VictoryTrophy");
             popupL = _content.Load<Texture2D>("Pictures/GameOver2");
 
@@ -77,11 +77,12 @@ namespace AstroFight.States
             _pop = _content.Load<SoundEffect>("Sounds/Pop");
             _explosion = _content.Load<SoundEffect>("Sounds/Explosion");
             _alert = _content.Load<SoundEffect>("Sounds/siren2");
-            //_win = _content.Load<SoundEffect>("Sounds/");
-            _lose = _content.Load<SoundEffect>("Sounds/Lose");
+            _win = _content.Load<Song>("Sounds/Win");
+            _lose = _content.Load<Song>("Sounds/Lose4");
 
             //BGM
-            _bgNormal = content.Load<Song>("Sounds/BGM_Gundam");
+            //_bgNormal = content.Load<SoundEffect>("Sounds/BGM_Gundam");
+            //_bgNormal.Play();
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
@@ -204,7 +205,7 @@ namespace AstroFight.States
             if (count_initial < 1)
             {
                 var texture = _content.Load<Texture2D>("Pictures/railgun");
-                var mother = _content.Load<Texture2D>("Pictures/MotherShipWithBabara");
+                var mother = _content.Load<Texture2D>("Pictures/mothership2");
                 turn_count = 0;
                 count_combo = 0;
                 _player = new Player(texture)
@@ -213,7 +214,7 @@ namespace AstroFight.States
                 };
                 _celling = new Celling(mother)
                 {
-                    _position = new Vector2(50, -350)
+                    _position = new Vector2(0, -550)
                 };
                 _grid = new int[18, 12]
                 {
@@ -299,8 +300,8 @@ namespace AstroFight.States
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
-                            MediaPlayer.Stop();
-                            _lose.Play();
+                            MediaPlayer.Play(_lose);
+                            MediaPlayer.IsRepeating = false;
                             _game.ChangeState(new GameOverNormal(_game, _graphicsDevice, _content));
                         }
                     }
@@ -317,7 +318,8 @@ namespace AstroFight.States
                     }
                     if (check_win == true)
                     {
-                        MediaPlayer.Stop();
+                        MediaPlayer.Play(_win);
+                        MediaPlayer.IsRepeating = false;
                         _game.ChangeState(new VictoryNormal(_game, _graphicsDevice, _content));
                     }
                     //random color

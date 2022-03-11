@@ -25,7 +25,7 @@ namespace AstroFight.States
             // BGM
             _backgroundSong = content.Load<Song>("Sounds/MaskedWolf");
 
-            MediaPlayer.IsRepeating = true;
+            //MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(_backgroundSong);
 
             // sfx

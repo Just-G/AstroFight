@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using AstroFight.Controls;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace AstroFight.States
 {
@@ -17,7 +18,7 @@ namespace AstroFight.States
         const int TILESIZE = 50;
         private List<Component> _components;
         private SoundEffect _click, _shoot, _pop, _explosion, _alert;
-        private SoundEffect _win, _lose;
+        private Song _win, _lose, _bgm;
 
         private Player _player;
         private Ball _balltest;
@@ -78,12 +79,13 @@ namespace AstroFight.States
             _pop = _content.Load<SoundEffect>("Sounds/Pop");
             _explosion = _content.Load<SoundEffect>("Sounds/Explosion");
             _alert = _content.Load<SoundEffect>("Sounds/siren2");
-            //_win = _content.Load<SoundEffect>("Sounds/");
-            _lose = _content.Load<SoundEffect>("Sounds/Lose");
+            _win = _content.Load<Song>("Sounds/Win");
+            _lose = _content.Load<Song>("Sounds/Lose4");
 
             //BGM
+            _bgm = _content.Load<Song>("Sounds/BGM_Redemption");
+            MediaPlayer.Play(_bgm);
 
-            
 
             // Buttons
             var buttonTexture_Home = _content.Load<Texture2D>("Buttons/Home_Pink2");
@@ -292,7 +294,8 @@ namespace AstroFight.States
                     {
                         if (_grid[15, i] != 0 && _grid[15, i] != 9 && _grid[15, i] != 6)
                         {
-                            _lose.Play();
+                            MediaPlayer.Play(_lose);
+                            MediaPlayer.IsRepeating = false;
                             _game.ChangeState(new GameOver(_game, _graphicsDevice, _content));
                         }
                     }
@@ -309,7 +312,8 @@ namespace AstroFight.States
                     }
                     if (check_win == true)
                     {
-                        //_win.Play();
+                        MediaPlayer.Play(_win);
+                        MediaPlayer.IsRepeating = false;
                         _game.ChangeState(new Victory(_game, _graphicsDevice, _content));
                     }
                     //random color

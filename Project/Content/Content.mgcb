@@ -31,6 +31,42 @@
 /processorParam:TextureFormat=Color
 /build:Backgrounds/BackGround.png
 
+#begin Backgrounds/bge.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/bge.png
+
+#begin Backgrounds/bgh.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/bgh.png
+
+#begin Backgrounds/bgh2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Backgrounds/bgh2.png
+
 #begin Backgrounds/MenuBG.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -259,6 +295,18 @@
 /processorParam:TextureFormat=Color
 /build:Pictures/BaseR.png
 
+#begin Pictures/bgnm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pictures/bgnm.png
+
 #begin Pictures/CellingBlackhole.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -330,6 +378,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Pictures/Line.jpg
+
+#begin Pictures/mothership2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Pictures/mothership2.png
 
 #begin Pictures/MotherShipWithBabara.png
 /importer:TextureImporter
@@ -546,4 +606,10 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Shootsound.wav
+
+#begin Sounds/Win.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Win.mp3
 
